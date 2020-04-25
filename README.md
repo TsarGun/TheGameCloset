@@ -6,7 +6,6 @@ Maksim Zubritckii for Illinois State University, Spring 2020 Semester__
 ## Installing The Game Closet
 
 1.  Download source files from [GitHub](https://github.com/TsarGun/TheGameCloset)
-    -   NOTE: As of the writing of this file, the `dev-kcw` branch is ahead of the master branch and was the version of the code demonstrated in class
 2.  Download and install [Node.js](https://nodejs.org/en/download/) which also includes the package manager used by Node ([npm](https://www.npmjs.com/))
     -   Verify that Node and npm are properly installed by opening a command prompt/terminal window and entering the commands `node -v` and `npm -v`
 3.  Install the `client` project downloaded from GitHub by opening a command prompt/terminal window in the `client` folder, then running `npm i` to download and install the client project's dependencies
