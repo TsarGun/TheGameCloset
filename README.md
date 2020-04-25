@@ -1,10 +1,11 @@
 # The Game Closet
 
-__A Web Development Technologies (IT 353) class project by Kevin Wickart and Maksim Zubritckii for Illinois State University, Fall 2019 Semester__
+__IT 354 - Advanced Web Application Development 
+Maksim Zubritckii for Illinois State University, Spring 2020 Semester__
 
 ## Installing The Game Closet
 
-1.  Download source files from [GitHub](https://github.com/kcwicka/IT353)
+1.  Download source files from [GitHub](https://github.com/TsarGun/TheGameCloset)
     -   NOTE: As of the writing of this file, the `dev-kcw` branch is ahead of the master branch and was the version of the code demonstrated in class
 2.  Download and install [Node.js](https://nodejs.org/en/download/) which also includes the package manager used by Node ([npm](https://www.npmjs.com/))
     -   Verify that Node and npm are properly installed by opening a command prompt/terminal window and entering the commands `node -v` and `npm -v`
