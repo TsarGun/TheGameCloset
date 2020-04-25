@@ -17,6 +17,6 @@ Maksim Zubritckii for Illinois State University, Spring 2020 Semester__
 
 ## How It Works
 
-The two projects provide a full stack JavaScript experience, known as a MEVN stack. The `client` project is a Vue.js application that utilizes Webpack.js to bundle and generate static files to serve to the user. The `server` project is an Express.js framework on Node that contacts mongoDB for database access.
+The two projects provide a full stack JavaScript experience. The `client` project is a Vue.js application that utilizes Webpack.js to bundle and generate static files to serve to the user. The `server` project is an Express.js framework on Node that contacts mongoDB for database access.
 
 When a user connects to the front-end website (located at `localhost:8080`), they are served static asset files (HTML, CSS, JS) created by the webpack bundler, as defined by the various Vue component files. Whenever a database action occurs, a request is made to the `server` project via `localhost:8081` which in turn handles taking the request and sending the appropriate request to mongoDB. This allows users to feel they have full control over the contents of their 'game closet' without actually giving users direct database access. This also allows the developer to provide hidden attributes, such as a `view` boolean to indicate if a game should be contained in a particular display, or a `remove` flag to indicate to the DBA that the user has requested an object be removed
