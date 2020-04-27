@@ -13,7 +13,8 @@ Maksim Zubritckii for Illinois State University, Spring 2020 Semester__
 ## Running The Game Closet
 
 1.  Open a command prompt/terminal window in the `client` folder and use the command `npm start` to run the webpack development server. This will not only provide the website at `localhost:8080`, but will automatically rebundle files when changes are detected (which allows for easier updating/debugging of the client side code)
-2.  Open a command prompt/terminal window in the `server` folder and user the command `npm start` to run the Express.js based backend. On launch, the server project will request a valid login for use with mongoDB; a generic user `admin` with password `admin` was created specifically for demonstrating the app
+2.  Open a command prompt/terminal window in the `server` folder and user the command `npm start` to run the Express.js based backend. On launch, the server project will request a valid login for use with mongoDB; a user `mzubrit` with password `TsarCannon` was created specifically for demonstrating the app.
+3.  Open 'http://localhost:8080/' in the browser and log in on the web page using 'test' as a user and 'abc123' as a password.
 
 ## How It Works
 
