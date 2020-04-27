@@ -1,6 +1,6 @@
 # client
 
-> IT354 Game Closet
+> IT353 Game Closet
 
 ## Build Setup
 
