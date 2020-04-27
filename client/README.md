@@ -1,6 +1,8 @@
 # client
 
-> IT353 Game Closet
+> IT354 Game Closet
+
+Open a command prompt/terminal window in the client folder and use the command npm start to run the webpack development server. This will not only provide the website at localhost:8080, but will automatically rebundle files when changes are detected (which allows for easier updating/debugging of the client side code)
 
 ## Build Setup
 
