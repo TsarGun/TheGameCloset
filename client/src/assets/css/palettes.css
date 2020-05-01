@@ -1,53 +1,68 @@
+/** TODO: Simplify palettes
+ ** Currently using all 8 grayscale + red/green/yellow
+ **/
+/*
+.pal-template {
+    --black: #;
+    --white: #;
+    --primary: #;
+    --secondary: #;
+    --accent1: #;
+    --accent2: #;
+    --accent3: #;
+    --success: #;
+    --warning: #;
+    --error: #;
+}
+*/
 /** Default **/
 :root {
-    --black: #000000;
-    --darkestgray: #242424;
-    --darkergray: #484848;
-    --darkgray: #6c6c6c;
-    --lightgray: #909090;
-    --lightergray: #b4b4b4;
-    --lightestgray: #d8d8d8;
-    --white: #ffffff;
-    --red: #e50000;
-    --orange: #e57800;
-    --yellow: #e5e500;
-    --green: #00c535;
-    --cyan: #00c5c5;
-    --blue: #0078e5;
-    --violet: #7800e5;
-    --magenta: #c500c5;
-}
-
-/** Solarized (Dark) **/
-.pal-solar-dk {
-    --black: #fdf6e3; /* base03 */
-    --darkestgray: #eee8d5; /* base02 */
-    --darkergray: #93a1a1; /* base01 */
-    --darkgray: #839496; /* base00 */
-    --lightgray: #657b83; /* base0 */
-    --lightergray: #586e75; /* base1 */
-    --lightestgray: #073642; /* base2 */
-    --white: #002b36; /* base3 */
-}
-/** Solarized (Light) **/
-.pal-solar-lt {
-    --black: #002b36; /* base03 */
-    --darkestgray: #073642; /* base02 */
-    --darkergray: #586e75; /* base01 */
-    --darkgray: #657b83; /* base00 */
-    --lightgray: #839496; /* base0 */
-    --lightergray: #93a1a1; /* base1 */
-    --lightestgray: #eee8d5; /* base2 */
-    --white: #fdf6e3; /* base3 */
+    --black: #000;
+    --white: #fff;
+    --primary: #888;
+    --secondary: #444;
+    --accent1: #d70;
+    --accent2: #d0d;
+    --accent3: #07d;
+    --success: #290;
+    --warning: #df0;
+    --error: #d00;
 }
 /** Solarized (Shared) **/
 .pal-solar-dk, .pal-solar-lt {
-    --red: #dc322f;
-    --orange: #cb4b16;
-    --yellow: #b58900;
-    --green: #859900;
-    --cyan: #2aa198;
-    --blue: #268bd2;
-    --violet: #6c71c4;
-    --magenta: #d33682;
+    --success: #859900;
+    --warning: #b58900;
+    --error: #dc322f;
+}
+/** Solarized (Dark) **/
+.pal-solar-dk {
+    --black: #fdf6e3;
+    --white: #002b36;
+    --primary: #93a1a1;
+    --secondary: #657b83;
+    --accent1: #6c71c4;
+    --accent2: #2aa198;
+    --accent3: #d33682;
+}
+/** Solarized (Light) **/
+.pal-solar-lt {
+    --black: #002b36;
+    --white: #fdf6e3;
+    --primary: #586e75;
+    --secondary: #657b83;
+    --accent1: #6c71c4;
+    --accent2: #2aa198;
+    --accent3: #d33682;
+}
+.pal-parchment {
+    --black: #;
+    --white: #;
+    --primary: #;
+    --secondary: #;
+    --accent1: #;
+    --accent2: #;
+    --accent3: #;
+    --success: #;
+    --warning: #;
+    --error: #;
 }

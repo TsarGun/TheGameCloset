@@ -1,40 +1,34 @@
 <template>
-    <header>
-        <router-link to="/">Game Closet</router-link><br>
-        <router-link to="/add-game">Add a Game</router-link><br>
-        <router-link to="/closet">View Closet</router-link><br>
-        <button type="button" @click="togglePalette()" />
+    <header class="curved">
+        <span class="title">The Game Closet</span>
+        <span id="navbar">
+            <span v-if="loggedIn">
+                <button class="curved" type="button" @click="link('/')" title="Home">🎲</button>
+                <button class="curved" type="button" @click="link('/add-game')" title="Add...">➕</button>
+                <button class="curved" type="button" @click="link('/closet')" title="View...">📃</button>
+                <button class="curved" type="button" id="toggle" @click="togglePalette()" title="Toggle Night Mode">{{ toggle }}</button>
+            </span>
+            <Login v-else @popup="$emit('popup', $event)"/>
+        </span>
     </header>
 </template>
 
 <script>
+import Login from './Login'
 export default {
-  data: () => ({ light: '🌞', dark: '🌑', toggle: {} }),
-  mounted () {
-    this.toggle = document.querySelector('[type="button"]')
-    this.toggle.innerText =
-      document.body.classList.contains('pal-solar-dk')
-        ? this.light
-        : this.dark
-  },
+  components: { Login },
+  props: [ 'loggedIn', 'toggle' ],
   methods: {
     togglePalette () {
-      const config =
-        this.toggle.innerText === this.dark
-          ? ({
-            oldBtn: this.dark,
-            newBtn: this.light,
-            oldPal: 'pal-solar-lt',
-            newPal: 'pal-solar-dk'
-          })
-          : ({
-            oldBtn: this.light,
-            newBtn: this.dark,
-            oldPal: 'pal-solar-dk',
-            newPal: 'pal-solar-lt'
-          })
-      document.body.classList.replace(config.oldPal, config.newPal)
-      this.toggle.innerText = this.toggle.innerText.replace(config.oldBtn, config.newBtn)
+      this.$emit('toggle')
+    },
+    test () {
+      this.$router.push('/')
+    },
+    async link (src) {
+      try {
+        await this.$router.push(src)
+      } catch (err) { }
     }
   }
 }
