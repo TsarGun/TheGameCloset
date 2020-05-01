@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Closet from '@/components/Closet'
 import AddGame from '@/components/AddGame'
 import UpdateGame from '@/components/UpdateGame'
+import Login from '@/components/Login'
 
 Vue.use(Router)
 
@@ -81,6 +82,11 @@ const router = new Router({
         ],
         title: 'Game Closet - Update a Game'
       }
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
     }
   ]
 })

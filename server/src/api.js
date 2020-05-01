@@ -1,67 +1,70 @@
 /** mongoDB helper functions */
-const { ObjectID } = require("mongodb");
+const { ObjectID } = require('mongodb');
 const MakeObjID = id => ({ _id: ObjectID(id) });
-const GetGames = client => client.db("closet").collection("games");
 
-class APIResponse {
-  constructor(response) {
-    Object.assign(this, { error: void 0, ok: void 0 }, response);
-  }
-  static Builder(error, success) {
-    return new APIResponse(error ? { error } : { ok: success });
-  }
-}
-const API = {
-  viewGames: (collection, request, response) => {
-    collection.find().toArray((err, res) => {
-      response.send(APIResponse.Builder(err, res));
-    });
-  },
-  saveGame: (collection, request, response) => {
-    const game = request.body;
-    if (game._id) {
-      // Update existing game
-      console.log("Update existing game");
-      const id = MakeObjID(game._id);
-      const update = { view: true };
-      update.title = game.title;
-      update.publisher = game.publisher;
-      update.genre = game.genre;
-      update.players = game.players;
-      collection.updateOne(id, { $set: update }, (err, res) => {
-        response.send(APIResponse.Builder(err, res));
-      });
-    } else {
-      // Add new game
-      console.log("Add new game");
-      collection.insertOne(game, (err, res) => {
-        response.send(APIResponse.Builder(err, res));
-      });
-    }
-  },
-  removeGame: (collection, request, response) => {
-    const game = MakeObjID(request.body.id);
-    collection.updateOne(
-      game,
-      { $set: { remove: true, view: false } },
-      (err, res) => {
-        response.send(
-          APIResponse.Builder(
-            err,
-            `${res.modifiedCount} game marked for removal`
-          )
-        );
-      }
-    );
-  }
-  /*
-  // NOTE: HTTP POST
-  // TODO: Implement update games
-  app.post("/updateGame", (request, response) => {
-    const gameToUpdate = {};
-    const newData = {};
-  });
-    */
+const ResponseBuilder = (error, success) => ({ error: error, ok: success });
+
+module.exports = client => {
+    return {
+        /*********
+         ** GET **
+         *********/
+        get: {
+            viewGames: (collection, request, response) => {
+                collection.find().toArray((err, res) => {
+                    response.send(ResponseBuilder(err, res));
+                });
+            }
+        },
+        /**********
+         ** POST **
+         **********/
+        post: {
+            saveGame: (collection, request, response) => {
+                const game = request.body;
+                if (game._id) {
+                    // Update existing game
+                    const id = MakeObjID(game._id);
+                    delete game._id;
+                    const update = {
+                        $set: Object.assign({ view: true }, game)
+                    };
+                    collection.updateOne(id, update, (err, res) => {
+                        response.send(ResponseBuilder(err, { updated: true }));
+                    });
+                } else {
+                    // Add new game
+                    collection.insertOne(game, (err, res) => {
+                        response.send(ResponseBuilder(err, { added: true }));
+                    });
+                }
+            },
+            removeGame: (collection, request, response) => {
+                const game = MakeObjID(request.body.id);
+                collection.updateOne(
+                    game,
+                    { $set: { remove: true, view: false } },
+                    (err, res) => {
+                        response.send(ResponseBuilder(err, { removed: true }));
+                    }
+                );
+            },
+            login: (collection, request, response) => {
+                const { user } = request.body;
+                collection.findOne({ user }, (err, res) => {
+                    if (!res || request.body.pass !== res.pass) {
+                        response.send(
+                            ResponseBuilder(
+                                `Invalid username/password combination`
+                            )
+                        );
+                        return;
+                    }
+                    response.send(ResponseBuilder(err, { loggedIn: true }));
+                });
+            }
+        },
+        GetGames: () => client.db('closet').collection('games'),
+        GetUsers: () => client.db('closet').collection('users')
+    };
 };
-
-module.exports = { API, GetGames };

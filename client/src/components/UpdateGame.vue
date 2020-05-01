@@ -1,5 +1,5 @@
 <template>
-    <GameForm :curData="curData" />
+    <GameForm :curData="curData" @popup="$emit('popup', $event)" />
 </template>
 
 <script>

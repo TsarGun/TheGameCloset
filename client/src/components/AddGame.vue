@@ -1,5 +1,5 @@
 <template>
-    <GameForm />
+    <GameForm @popup="$emit('popup', $event)"/>
 </template>
 
 <script>
