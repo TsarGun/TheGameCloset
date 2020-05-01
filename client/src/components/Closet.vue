@@ -1,8 +1,9 @@
 <template>
     <div id="closet">
-        <ul v-if="viewable.length">
+        <span v-if="!viewable.length || !closet.length">There's nothing here!</span>
+        <div v-else>
             <Game :game="game" :key="game._id" v-for="game in viewable" @refresh="loadCloset($event)"/>
-        </ul>
+        </div>
     </div>
 </template>
 
@@ -21,14 +22,14 @@ export default {
   methods: {
     async loadCloset (event) {
       if (event) {
-        // Popup Modal
+        this.$emit('popup', event)
       }
-      const { data } = await GameClosetAPI.viewGames()
-      if (data.ok) {
+      const { data: response } = await GameClosetAPI.viewGames()
+      if (response.ok) {
         this.closet = []
-        this.closet.push(...(data.ok))
+        this.closet.push(...(response.ok))
       } else {
-        console.warn(data.error)
+        this.$emit('popup', response)
       }
     }
   }

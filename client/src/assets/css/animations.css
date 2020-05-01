@@ -1,0 +1,16 @@
+@keyframes slidedown {
+  from {
+    top: -20%;
+  }
+  to {
+    top: 20%;
+  }
+}
+@keyframes slideup {
+  from {
+    top: 20%;
+  }
+  to {
+    top: -20%;
+  }
+}

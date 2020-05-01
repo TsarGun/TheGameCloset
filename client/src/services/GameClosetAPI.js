@@ -9,5 +9,8 @@ export default {
   },
   viewGames () {
     return API().get('view-games')
+  },
+  login (login) {
+    return API().post('login', login)
   }
 }
