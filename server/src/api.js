@@ -52,14 +52,6 @@ module.exports = client => {
             login: (collection, request, response) => {
                 const { user } = request.body;
                 collection.findOne({ user }, (err, res) => {
-                    if (!res || request.body.pass !== res.pass) {
-                        response.send(
-                            ResponseBuilder(
-                                `Invalid username/password combination`
-                            )
-                        );
-                        return;
-                    }
                     response.send(ResponseBuilder(err, { loggedIn: true }));
                 });
             }
@@ -68,3 +60,4 @@ module.exports = client => {
         GetUsers: () => client.db('closet').collection('users')
     };
 };
+
